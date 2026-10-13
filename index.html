@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0e">
+<title>Ritmo e Memória</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-grid" aria-hidden="true"></div>
+<main class="app" id="app">
+
+  <header class="topbar">
+    <button class="icon-btn" id="btnHome" aria-label="Início">
+      <svg viewBox="0 0 24 24"><path d="M12 3 2 12h3v9h5v-6h4v6h5v-9h3z"/></svg>
+    </button>
+    <h1 class="logo"><span class="logo-blocks"><i></i><i></i><i></i><i></i></span><span>Memória <em>Sonora</em></span></h1>
+    <button class="icon-btn" id="btnSettings" aria-label="Configurações">
+      <svg viewBox="0 0 24 24"><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" transform="translate(-1 0)"/></svg>
+    </button>
+  </header>
+
+  <section class="scoreboard" aria-live="polite">
+    <div class="label">Pontos</div>
+    <div class="score" id="score">0</div>
+    <div class="best" id="best">Recorde (Médio): 0</div>
+    <div class="stars" id="stars" aria-hidden="true"></div>
+  </section>
+
+  <section class="pads" id="pads" aria-label="Botões do jogo">
+    <button class="pad" data-i="0" style="--c:#3dff00;--c2:#f4ff00" aria-label="Verde"></button>
+    <button class="pad" data-i="1" style="--c:#ff1a1a;--c2:#b30000" aria-label="Vermelho"></button>
+    <button class="pad" data-i="2" style="--c:#ffd900;--c2:#ffb800" aria-label="Amarelo"></button>
+    <button class="pad" data-i="3" style="--c:#00e5ff;--c2:#0090d6" aria-label="Ciano"></button>
+    <button class="pad" data-i="4" style="--c:#a020ff;--c2:#ff10f0" aria-label="Roxo"></button>
+    <button class="pad" data-i="5" style="--c:#ff10f0;--c2:#ff3a9a" aria-label="Rosa"></button>
+  </section>
+
+  <footer class="status">
+    <div class="status-line" id="status">Desafie sua memória</div>
+  </footer>
+
+  <!-- Menu inicial -->
+  <div class="overlay show" id="menu">
+    <div class="panel">
+      <h2>Escolha a dificuldade</h2>
+      <div class="levels" id="levels">
+        <button class="level" data-level="easy"><svg viewBox="0 0 24 24"><path d="M11 5 3 12l8 7v-4.5h10v-5H11z"/></svg><span>Fácil</span></button>
+        <button class="level active" data-level="medium"><svg viewBox="0 0 24 24"><path d="M12 5V2L7 6.5 12 11V8a5 5 0 1 1-5 5H5a7 7 0 1 0 7-8z"/></svg><span>Médio</span></button>
+        <button class="level" data-level="hard"><svg viewBox="0 0 24 24"><path d="m13 5 8 7-8 7v-4.5H3v-5h10z"/></svg><span>Difícil</span></button>
+      </div>
+      <p class="hint" id="levelHint">Ouça a sequência e repita na mesma ordem.</p>
+      <button class="main-btn" id="btnPlay">Jogar</button>
+    </div>
+  </div>
+
+  <!-- Fim de jogo -->
+  <div class="overlay" id="gameover">
+    <div class="panel">
+      <h2>Fim de jogo</h2>
+      <div class="final" id="finalScore">0</div>
+      <p class="hint" id="finalMsg"></p>
+      <button class="main-btn" id="btnAgain">Jogar de novo</button>
+      <button class="ghost-btn" id="btnMenu">Mudar dificuldade</button>
+    </div>
+  </div>
+
+  <!-- Configurações -->
+  <div class="overlay" id="settings">
+    <div class="panel">
+      <h2>Configurações</h2>
+      <label class="switch-row"><span>Som</span><input type="checkbox" id="optSound" checked><i class="switch"></i></label>
+      <label class="switch-row"><span>Vibração</span><input type="checkbox" id="optVibe" checked><i class="switch"></i></label>
+      <button class="ghost-btn" id="btnResetBest">Zerar recordes</button>
+      <button class="main-btn" id="btnCloseSettings">Fechar</button>
+    </div>
+  </div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
